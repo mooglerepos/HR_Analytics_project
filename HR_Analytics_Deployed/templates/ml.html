@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <title>Upload Dataset</title>
+</head>
+
+<body>
+
+  <style>
+    body {
+      background: #f5f5f5;
+      padding: 0px;
+    }
+
+    label {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .range-slider {
+      width: 100%;
+    }
+
+    .range-slider__range {
+      -webkit-appearance: none;
+      width: calc(100% - (73px));
+      height: 10px;
+      border-radius: 5px;
+      background: #d7dcdf;
+      outline: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .range-slider__range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: #2c3e50;
+      cursor: pointer;
+      -webkit-transition: background 0.15s ease-in-out;
+      transition: background 0.15s ease-in-out;
+    }
+
+    .range-slider__range::-webkit-slider-thumb:hover {
+      background: #0d6efd;
+    }
+
+    .range-slider__range:active::-webkit-slider-thumb {
+      background: #0d6efd;
+    }
+
+    .range-slider__range::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      border: 0;
+      border-radius: 50%;
+      background: #2c3e50;
+      cursor: pointer;
+      -moz-transition: background 0.15s ease-in-out;
+      transition: background 0.15s ease-in-out;
+    }
+
+    .range-slider__range::-moz-range-thumb:hover {
+      background: #0d6efd;
+    }
+
+    .range-slider__range:active::-moz-range-thumb {
+      background: #0d6efd;
+    }
+
+    .range-slider__range:focus::-webkit-slider-thumb {
+      box-shadow: 0 0 0 3px #fff, 0 0 0 6px #0d6efd;
+    }
+
+    .range-slider__value {
+      display: inline-block;
+      position: relative;
+      width: 60px;
+      color: #fff;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 3px;
+      background: #2c3e50;
+      padding: 5px 10px;
+      margin-left: 8px;
+    }
+
+    .range-slider__value:after {
+      position: absolute;
+      top: 8px;
+      left: -7px;
+      width: 0;
+      height: 0;
+      border-top: 7px solid transparent;
+      border-right: 7px solid #2c3e50;
+      border-bottom: 7px solid transparent;
+      content: "";
+    }
+
+    ::-moz-range-track {
+      background: #d7dcdf;
+      border: 0;
+    }
+
+    input::-moz-focus-inner,
+    input::-moz-focus-outer {
+      border: 0;
+    }
+
+    .output-feature {
+      background: #fff;
+      border-radius: 11px;
+      font-weight: 500;
+      max-width: 82%;
+      margin: 0 auto;
+      box-shadow: 0px 0px 6px 2px #afa9a9;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+    }
+
+    .banner-sec {
+      background-image: url(static/job_heading_bg.jpg);
+      width: 100%;
+      padding: 60px 0px;
+      position: relative;
+    }
+
+    .form-row {
+      background: rgb(248,246,246);
+      max-width: 100%;
+      margin: 0 20px;
+      padding: 40px;
+      margin-top: 50px;
+      border-radius: 5px;
+      box-shadow: 0px 0px 6px 2px #afa9a9;
+    }
+
+    .footer-bottomm {
+      text-align: left;
+      background: rgb(248,246,246);
+      max-width: 100%;
+      margin: 0 20px;
+      margin-top: 25px;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 6px 2px #afa9a9;
+      margin-bottom: 40px;
+    }
+
+    .main-content {
+      display: flex;
+    }
+
+    .main-content .tabs {
+      width: 30%;
+      margin-top: 50px;
+    }
+
+    .main-content .tabs a {
+      display: block;
+      text-align: start;
+    }
+
+    .form-box {
+      width: 70%;
+    }
+  </style>
+
+  <section>
+    <div class="banner-sec">
+      <div class="container">
+        <h1 class="text-center my-5 text-white font-weight-bold" style="text-shadow: #fc0 1px 0 10px; font-size: 55px;">
+          HR Analysis: Employee Attrition Prediction</h1>
+
+        <h4 class="text-center my-2 text-white px-5"
+          style="text-shadow: #fc0 1px 0 10px; font-size: 29px; line-height: 44px;">A tool to enhance the decision
+          making of HR department to find out the Attrition
+          Prediction of the Employee
+
+        </h4>
+      </div>
+    </div>
+
+
+    <div class="container">
+      <div style="color:rgb(0, 0, 0)" class="main-content">
+        <div class="tabs">
+          <a href="{{ url_for('Home') }}" class="btn ">Home Page</a>
+          <a href="{{ url_for('harvard') }}" class="btn">Prediction Based on Harvard Study</a>
+          <a href="{{ url_for('cambridge') }}" class="btn">Prediction Based on Cambridge Study</a>
+          <a href="{{ url_for('ml') }}" class="btn btn-primary my-3">Upload your Data</a>
+        </div>
+        <div class="form-box">
+          <div class="form">
+            <form class="form-row" action="{{ url_for('ml')}}" method="post" enctype="multipart/form-data">
+
+              
+              <h6 class="text-center mt-3 mb-5 fs-2">Prediction based on Upload Data</h6>
+              <p>Target column name should be 'Attrition'</p>
+              <input type="file" name="csvfile" value="">
+              <input type="submit" value="Submit">
+
+
+              {% if shape %}
+              <h2>DataFrame Information</h2>
+              The shape of your data is: {{ shape }}
+              <p>Your Data is trained, Please give inputs in the below section</p>
+              {% endif %}
+            </form>
+          </div>
+          {% if shape %}
+          <div class="form">
+            <form class="form-row" action="{{ url_for('userinput')}}" method="post" enctype="multipart/form-data">
+              <h6 class="text-center mt-3 mb-5 fs-2">Choose the inputs to know the Attrition Prediction</h6>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mb-2">Age of the Employee</label>
+                    <input type="text" class="form-control" name="Age" id="exampleInputEmail1"
+                      aria-describedby="emailHelp">
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mb-2">Gender</label>
+                    <select class="form-select" name="Gender" aria-label="Default select example">
+                      <option></option>
+                      <option value="1">Male</option>
+                      <option value="0">Female</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Job Role</label>
+                    <select class="form-select" name="JobRole" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">Customer Support Executive</option>
+                      <option value="1">Human Resource</option>
+                      <option value="2">Software Development</option>
+                      <option value="3">Manager</option>
+                      <option value="4">Web Designer</option>
+                      <option value="5">Marketing Executive</option>
+                      <option value="6">Research Scientist</option>
+                      <option value="7">Sales Executive</option>
+                      <option value="8">Team Lead</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Education Field</label>
+                    <select class="form-select" name="EducationField" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">HR</option>
+                      <option value="1">UG/Dimploma</option>
+                      <option value="2">Marketing</option>
+                      <option value="3">Medical</option>
+                      <option value="4">Other</option>
+                      <option value="5">Technical Degree</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">City</label>
+                    <select class="form-select" name="City" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">Bangalore</option>
+                      <option value="1">Delhi</option>
+                      <option value="2">Mohali</option>
+                      <option value="3">Pune</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Business Type</label>
+                    <select class="form-select" name="Business_type" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">BPO</option>
+                      <option value="1">KPO</option>
+                      <option value="2">Porduct_based</option>
+                      <option value="3">Service_based</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Business Travel</label>
+                    <select class="form-select" name="BusinessTravel" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">Non Travel</option>
+                      <option value="1">Travel Frequently</option>
+                      <option value="2">Travel Rarely</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Department</label>
+                    <select class="form-select" name="Department" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">HR</option>
+                      <option value="1">R&D</option>
+                      <option value="2">Sales</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Marital Status</label>
+                    <select class="form-select" name="MaritalStatus" aria-label="Default select example">
+                      <option></option>
+                      <option value="0">Divorced</option>
+                      <option value="1">Married</option>
+                      <option value="2">Single</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Education</label>
+                    <select class="form-select" name="Education" aria-label="Default select example">
+                      <option></option>
+                      <option value="1">Below College</option>
+                      <option value="2">College</option>
+                      <option value="3">Bachelor</option>
+                      <option value="4">Master</option>
+                      <option value="5">Doctor</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1" class="mt-3 mb-1">Number of Companies Worked</label>
+                    <input type="number" class="form-control" name="NumCompaniesWorked" id="exampleInputEmail1"
+                      aria-describedby="emailHelp">
+                  </div>
+                </div>
+                <div class="col-md-6"></div>
+
+
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="customRange3" class="form-label mt-3 mb-1">Total Working Years</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="TotalWorkingYears" type="range" value="0" min="0"
+                        max="40">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="customRange3" class="form-label mt-3 mb-1">Percent Salary Hike
+                      (%)</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="PercentSalaryHike" type="range" value="0" min="11"
+                        max="25">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1 mt-3 mb-1">Years Since Last Promotion</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="YearsSinceLastPromotion" type="range" value="0" min="0"
+                        max="15">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1 mt-3 mb-1">Job Level(Scale 1 to 5)</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="JobLevel" type="range" value="0" min="1" max="5">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="customRange3" class="form-label mt-3 mb-1">Monthly Income</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="MonthlyIncome" type="range" value="0" min="10000"
+                        max="300000">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label for="customRange3" class="form-label mt-3 mb-1">Distance From Home
+                      (Km)</label>
+                    <div class="range-slider">
+                      <input class="range-slider__range" name="DistanceFromHome" type="range" value="0" min="0"
+                        max="30">
+                      <span class="range-slider__value">0</span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="col-md-12 text-center">
+                <button id="sub" type="submit" class="mt-4 btn btn-primary btn-lg text-center">Attrition
+                  Prediction</button>
+              </div>
+            </form>
+
+
+
+
+
+          </div>
+          {% endif %}
+
+          {% if feature %}
+          <div class="footer-bottomm">
+            <h4>{{ feature }}</h4>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+  </section>
+  <script>
+    const settings = {
+      fill: '#0275d8',
+      background: '#d7dcdf'
+    }
+
+    // First find all our sliders
+    const sliders = document.querySelectorAll('.range-slider');
+
+    // Iterate through that list of sliders
+    // ... this call goes through our array of sliders [slider1,slider2,slider3] and inserts them one-by-one into the code block below with the variable name (slider). We can then access each of wthem by calling slider
+    Array.prototype.forEach.call(sliders, (slider) => {
+      // Look inside our slider for our input add an event listener
+      //   ... the input inside addEventListener() is looking for the input action, we could change it to something like change
+      slider.querySelector('input').addEventListener('input', (event) => {
+        // 1. apply our value to the span
+        slider.querySelector('span').innerHTML = event.target.value;
+        // 2. apply our fill to the input
+        applyFill(event.target);
+      });
+      // Don't wait for the listener, apply it now!
+      applyFill(slider.querySelector('input'));
+    });
+
+    // This function applies the fill to our sliders by using a linear gradient background
+    function applyFill(slider) {
+      // Let's turn our value into a percentage to figure out how far it is in between the min and max of our input
+      const percentage = 100 * (slider.value - slider.min) / (slider.max - slider.min);
+      // now we'll create a linear gradient that separates at the above point
+      // Our background color will change here
+      const bg = `linear-gradient(90deg, ${settings.fill} ${percentage}%, ${settings.background} ${percentage + 0.1}%)`;
+      slider.style.background = bg;
+    }
+
+  </script>
+</body>
+
+</html>
